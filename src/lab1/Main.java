@@ -1,5 +1,6 @@
 package lab1;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     private ArrayList<Book> bookArrayList = new ArrayList<Book>();
@@ -31,6 +32,40 @@ public class Main {
         main.bookArrayList.add(book1);
         main.bookArrayList.add(book2);
         main.bookArrayList.add(book3);
+
+        boolean isActive = true;
+        while (isActive){
+            System.out.printf("\nВведіть номер за яким критерієм здійснювати пошук:\n"+
+                    "1.Пошук за автором.\n"+
+                    "2.Пошук по видавництву.\n"+
+                    "3.Пошук випущених після заданого року.\n" +
+                    "4.Вийти з програми.\n"+
+                    "Виберіть критерій:"
+            );
+            Scanner scanner = new Scanner(System.in);
+
+            switch (scanner.nextInt())
+            {
+                case(1):
+                    System.out.print("Введіть імя автора: ");
+                    scanner = new Scanner(System.in);
+                    System.out.println(main.searchAuthor(scanner.nextLine()));
+                    break;
+                case(2):
+                    System.out.print("Введіть назву видавництва: ");
+                    scanner = new Scanner(System.in);
+                    System.out.println(main.searchPublisher(scanner.nextLine()));
+                    break;
+                case(3):
+                    System.out.print("Введіть рік: ");
+                    System.out.println(main.searchYearPublication(scanner.nextInt()));
+                    break;
+                case(4):
+                    isActive = false;
+                    break;
+
+            }
+        }
     }
 
     public String searchAuthor(String author){
